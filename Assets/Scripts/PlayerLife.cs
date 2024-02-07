@@ -26,9 +26,12 @@ public class PlayerLife : MonoBehaviour
         deathSoundEffect.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
+        PlayerManager.isGameOver= true;
+        
     }
-    private void RestartLevel ()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload current level
-    }
+    
+    //private void RestartLevel ()
+    //{
+       // SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload current level immedi
+    //}
 }

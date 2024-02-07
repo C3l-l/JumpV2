@@ -5,8 +5,15 @@ using UnityEngine;
 public class EndMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void Quit()
+    //public void Quit()
+    //{
+        //Application.Quit();
+    //}
+    void Update()
     {
-        Application.Quit();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
