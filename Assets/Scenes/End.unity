@@ -208,8 +208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -369,7 +369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.5021, y: 8}
+  m_AnchoredPosition: {x: 28.5021, y: 82.8}
   m_SizeDelta: {x: 257.0044, y: 92.7533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &197473681
@@ -504,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 123, y: -66}
+  m_AnchoredPosition: {x: 123, y: -29.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &369771644
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thank you for playing!
+  m_text: Congrats! The fruits are collected!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56789ab90c069454995a9a1595ca7284, type: 2}
   m_sharedMaterial: {fileID: 4735692864244001254, guid: 56789ab90c069454995a9a1595ca7284, type: 2}
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -249.05054, y: 0, z: 0, w: 22.640945}
+  m_margin: {x: -305.1587, y: 0, z: -57.09265, w: 22.640945}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -709,7 +709,7 @@ RectTransform:
   m_GameObject: {fileID: 572363810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5375, y: 1.6125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9210982}
