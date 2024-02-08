@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286019716267571431}
   - component: {fileID: 1286019716267571428}
+  - component: {fileID: 8075005061910537940}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -46,3 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownTime: 3
   coundownDisplay: {fileID: 0}
+--- !u!114 &8075005061910537940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286019716267571429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63180373b7adbc7419f87c86fee08681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 0}
+  pauseMenuScreen: {fileID: 0}
+  fruitsText: {fileID: 0}

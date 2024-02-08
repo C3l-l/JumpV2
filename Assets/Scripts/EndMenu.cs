@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class EndMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public void Quit()
-    //{
-        //Application.Quit();
-    //}
+    //Start is called before the first frame update
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            QuitGame();
         }
     }
+    public void QuitGame()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+    // public void QuitGame()
+//{
+    //Application.Quit();
+//}
 }
