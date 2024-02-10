@@ -9,20 +9,20 @@ public class ArduinoController : MonoBehaviour
 {
     private Rigidbody2D rb; 
     private BoxCollider2D coll;
-    private SpriteRenderer sprite;
     private Animator anim;
+    private float amountToMove;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float playerSpeed = 2.5f;
     [SerializeField] private float jumpForce = 14f;
-
-    //public float moveSpeed;
-    //private float amountToMove;
+    
+    //public float moveSpeed
     //public float jumpForce;
 
 
     SerialPort sp = new SerialPort("COM5", 57600); 
     [SerializeField] private AudioSource jumpSoundEffect;
+    
 
     //private Rigidbody2D myRigidbody;
 
@@ -41,7 +41,6 @@ public class ArduinoController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
         sp.Open();
         sp.ReadTimeout = 1;
     }
@@ -51,7 +50,7 @@ public class ArduinoController : MonoBehaviour
     {
         //grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
         //myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
-        //amountToMove = moveSpeed * Time.deltaTime;
+        amountToMove = moveSpeed * Time.deltaTime;
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
 
         if (sp.IsOpen)
@@ -67,7 +66,6 @@ public class ArduinoController : MonoBehaviour
         }
 
         anim.SetFloat("Speed", rb.velocity.x);
-
         // myAnimator.SetBool("Grounded", grounded);
     }
 
@@ -81,7 +79,7 @@ public class ArduinoController : MonoBehaviour
             //ScoreManager.instance.AddPoint();
             anim.SetBool("isJumping", true);
             //transform.Translate(Vector2.right * amountToMove, Space.World);
-            transform.Translate(Vector2.right * Time.deltaTime * playerSpeed, Space.World);
+            transform.Translate(Vector2.right * Time.deltaTime * playerSpeed);
 
         }
 
@@ -89,6 +87,7 @@ public class ArduinoController : MonoBehaviour
         {
             anim.SetBool("isJumping", false);
         }
+
     }
     private bool IsGrounded()
     {
