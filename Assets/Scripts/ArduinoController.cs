@@ -9,9 +9,11 @@ public class ArduinoController : MonoBehaviour
 {
     private Rigidbody2D rb; 
     private BoxCollider2D coll;
+    private SpriteRenderer sprite;
     private Animator anim;
     private float amountToMove;
     [SerializeField] private LayerMask jumpableGround;
+    private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float playerSpeed = 2.5f;
     [SerializeField] private float jumpForce = 14f;
@@ -21,8 +23,9 @@ public class ArduinoController : MonoBehaviour
 
 
     SerialPort sp = new SerialPort("COM5", 57600); 
+   
+    private enum MovementState { idle, running, jumping, falling };
     [SerializeField] private AudioSource jumpSoundEffect;
-    
 
     //private Rigidbody2D myRigidbody;
 
@@ -41,6 +44,8 @@ public class ArduinoController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+
         sp.Open();
         sp.ReadTimeout = 1;
     }
@@ -50,8 +55,9 @@ public class ArduinoController : MonoBehaviour
     {
         //grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
         //myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
-        amountToMove = moveSpeed * Time.deltaTime;
+        dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        amountToMove = moveSpeed * Time.deltaTime;
 
         if (sp.IsOpen)
         {
@@ -64,8 +70,9 @@ public class ArduinoController : MonoBehaviour
             {
             }
         }
+        UpdateAnimationState();
 
-        anim.SetFloat("Speed", rb.velocity.x);
+        //anim.SetFloat("Speed", rb.velocity.x);
         // myAnimator.SetBool("Grounded", grounded);
     }
 
@@ -88,6 +95,35 @@ public class ArduinoController : MonoBehaviour
             anim.SetBool("isJumping", false);
         }
 
+    }
+    
+    private void UpdateAnimationState()
+    {
+        MovementState state; 
+        if (dirX > 0f)
+        {
+            state = MovementState.running;
+            sprite.flipX = false;
+        }
+        else if (dirX < 0f)
+        {
+            state = MovementState.running;
+            sprite.flipX = true;
+        }
+        else
+        {
+            state = MovementState.idle;
+        }
+
+        if (rb.velocity.y>.1f) //upward force applied
+        {
+            state = MovementState.jumping;
+        }
+        else if (rb.velocity.y < -.1f)
+        {
+            state = MovementState.falling;
+        }
+        anim.SetInteger("state", (int)state);
     }
     private bool IsGrounded()
     {

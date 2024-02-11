@@ -40,13 +40,16 @@ public class PlayerMovement : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal"); //left=-1, right =1
         
         transform.Translate(Vector2.right * Time.deltaTime * playerSpeed);
+        //rb.velocity= new Vector2(moveSpeed, rb.velocity.y); //prev
 
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             jumpSoundEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            
         }
         UpdateAnimationState();
         
