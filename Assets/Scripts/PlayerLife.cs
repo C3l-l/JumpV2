@@ -32,6 +32,6 @@ public class PlayerLife : MonoBehaviour
     
     //private void RestartLevel ()
     //{
-       // SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload current level immedi
+       // SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload current level immedi, go to player-Death animation 1:15
     //}
 }

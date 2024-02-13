@@ -16,7 +16,7 @@ public class PlayfabManager : MonoBehaviour
     //void Login() { 
 
         //var request = new LoginWithCustomIDRequest {
-            //CustomID = SystemInfo.deviceUniqueIdentifier,
+            //CustomId = SystemInfo.deviceUniqueIdentifier,
             //CreateAccount = true
 
         //};
