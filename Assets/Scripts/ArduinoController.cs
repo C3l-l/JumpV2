@@ -14,7 +14,7 @@ public class ArduinoController : MonoBehaviour
     private float amountToMove;
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
-    [SerializeField] private float moveSpeed = 7f;
+    //[SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float playerSpeed = 2.5f;
     [SerializeField] private float jumpForce = 14f;
     
@@ -56,8 +56,8 @@ public class ArduinoController : MonoBehaviour
         //grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
         //myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
         dirX = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        amountToMove = moveSpeed * Time.deltaTime;
+        rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
+        amountToMove = playerSpeed * Time.deltaTime;
 
         if (sp.IsOpen)
         {
