@@ -15,8 +15,8 @@ public class ArduinoController : MonoBehaviour
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
     //[SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float playerSpeed = 2.5f;
-    [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private float playerSpeed = 3f;
+    [SerializeField] private float jumpForce = 15f;
     
     //public float moveSpeed
     //public float jumpForce;
