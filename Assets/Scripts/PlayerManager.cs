@@ -16,18 +16,18 @@ public class PlayerManager : MonoBehaviour
     public static int numberOfFruits;
     public TextMeshProUGUI fruitsText;
 
-    //public PlayfabManager playfabManager;
-    //public int maxPlatform = 0;
+    public PlayfabManager playfabManager;
+    public int maxPlatform = 0;
 
     private void Awake()
     {
         UnityEngine.Debug.Log("PlayerManager Awake called");
-        //numberOfFruits = PlayerPrefs.GetInt("NumberOfFruits", 0);
-        fruitsText = GameObject.Find("Fruits Text").GetComponent<TextMeshProUGUI>();
+        numberOfFruits = PlayerPrefs.GetInt("NumberOfFruits", 0);
+        fruitsText = GameObject.Find("FruitsText").GetComponent<TextMeshProUGUI>();
         fruitsText.SetText(numberOfFruits.ToString());
         isGameOver = false;
         isLevelComplete = false;
-        //playfabManager = FindObjectOfType<PlayfabManager>();
+        playfabManager = FindObjectOfType<PlayfabManager>();
         myCountdown = GetComponent<Countdown>();
         if (numberOfFruits < 0)
         {
