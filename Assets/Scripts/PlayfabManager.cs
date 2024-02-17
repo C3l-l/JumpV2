@@ -38,7 +38,7 @@ public class PlayfabManager : MonoBehaviour
     {
         PlayFabSettings.TitleId = titleId;
     }
-
+    
 
     public void Login()
     {
@@ -63,7 +63,7 @@ public class PlayfabManager : MonoBehaviour
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginError);
     }
 
-
+    
 
     IEnumerator DelayedLoginSuccess(LoginResult result)
     {
