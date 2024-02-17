@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: celestinelim2003@gmail.com
-  DevAccountToken: t9hp1ompx5dha9nghgw965fptugiczsi96wt7r9487b4dc8ugh841x1csw9g3ibmmmwcssdiw6x5tywrj3koka8j94jaqr9arag5z8fpxd1cxra8jiizez9epjhfemnou1az8rbpae9nky63za3yhsq63xydxybndbc1otuk8zbfqcc4o8f6ur1dxrszjtsptf7cafk1
+  DevAccountToken: zw4tzecgyg3op36ny17rrrqewth7yfa98wtjj7juscnpdq7nqxeajrcq6hzo9ksr679cpamqatktrfdnbd6njegc5d1fn54ngc7tfzs3ekehqnpjiw8dts4cpco61rbmjysw3ocn496cwuzg6zdy3516t4yy9qne7ez53o946mrbpi1xotpyx7towsow9xogg1ikyrs3
   AadAuthorization: 
-  SelectedStudio: JumpV2
+  SelectedStudio: 
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
-  PanelIsShown: 0
-  curMainMenuIdx: 1
+  PanelIsShown: 1
+  curMainMenuIdx: 0
   curSubMenuIdx: 0
