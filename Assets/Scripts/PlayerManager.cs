@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 {
     // display game over screen
     public static bool isGameOver;
+    public static bool isGameCompleted;
     public static bool isLevelComplete;
     public GameObject gameOverScreen;
     public GameObject pauseMenuScreen;
@@ -39,11 +40,17 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (isGameCompleted)
+        {
+            StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
+        }
+
         if (isGameOver)
         {
             gameOverScreen.SetActive(true);
-            //StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
+            StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
         }
+        
     }
 
     // Update the number of fruits and update the UI text
