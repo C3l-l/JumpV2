@@ -14,6 +14,7 @@ public class LeaderboardUpdate : MonoBehaviour
 		if (sceneName == "End")
 		{
 			PlayerManager.isGameCompleted = true;
+			PlayerPrefs.DeleteAll();
 		}
 	}
 		

@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
 
     public static int numberOfFruits;
     public TextMeshProUGUI fruitsText;
+    public int score;
 
     public PlayfabManager playfabManager;
     public int maxPlatform = 0;
@@ -27,6 +28,7 @@ public class PlayerManager : MonoBehaviour
         fruitsText = GameObject.Find("FruitsText").GetComponent<TextMeshProUGUI>();
         fruitsText.SetText(numberOfFruits.ToString());
         isGameOver = false;
+        isGameCompleted = false;
         isLevelComplete = false;
         playfabManager = FindObjectOfType<PlayfabManager>();
         myCountdown = GetComponent<Countdown>();
@@ -57,6 +59,7 @@ public class PlayerManager : MonoBehaviour
     public void UpdateFruits(int amount)
     {
         numberOfFruits += amount;
+        score += amount;
         if (numberOfFruits < 0)
         {
             numberOfFruits = 0;

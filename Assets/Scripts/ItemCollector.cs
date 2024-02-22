@@ -27,7 +27,7 @@ public class ItemCollector : MonoBehaviour
             //fruits++;
             //fruitsText.text = "Fruits: " + fruits;
             UpdateFruitsText();
-            PlayerPrefs.DeleteAll(); //reset all the prefab
+            //PlayerPrefs.DeleteAll(); //reset all the prefab
             
 
         }
