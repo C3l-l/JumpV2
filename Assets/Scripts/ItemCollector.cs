@@ -28,6 +28,8 @@ public class ItemCollector : MonoBehaviour
             //fruitsText.text = "Fruits: " + fruits;
             UpdateFruitsText();
             //PlayerPrefs.DeleteAll(); //reset all the prefab
+
+            ScoreManager.instance.AddPoint();
             
 
         }

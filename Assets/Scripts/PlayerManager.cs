@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     public void UpdateFruits(int amount)
     {
         numberOfFruits += amount;
-        score += amount;
+        
         if (numberOfFruits < 0)
         {
             numberOfFruits = 0;
