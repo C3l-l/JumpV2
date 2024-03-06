@@ -32,8 +32,8 @@ public class Countdown : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CountdownToStart());
-        GameObject.FindWithTag("Player").GetComponent<ArduinoController>().enabled = false;
-        //GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
+        //GameObject.FindWithTag("Player").GetComponent<ArduinoController>().enabled = false;
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
     }
 
 
@@ -49,7 +49,7 @@ public class Countdown : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         coundownDisplay.gameObject.SetActive(false);
-        GameObject.FindWithTag("Player").GetComponent<ArduinoController>().enabled = true;
-        //GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
+        //GameObject.FindWithTag("Player").GetComponent<ArduinoController>().enabled = true;
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
     }
 }
