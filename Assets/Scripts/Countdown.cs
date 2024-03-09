@@ -39,12 +39,12 @@ public class Countdown : MonoBehaviour
 
     IEnumerator CountdownToStart()
     {
-        while (countdownTime > 0)
-        {
-            coundownDisplay.text = countdownTime.ToString();
-            yield return new WaitForSeconds(1f);
-            countdownTime--;
-        }
+        //while (countdownTime > 0)
+        //{
+            //coundownDisplay.text = countdownTime.ToString();
+            //yield return new WaitForSeconds(1f);
+            //countdownTime--;
+        //}
         coundownDisplay.text = "GO!";
 
         yield return new WaitForSeconds(1f);
