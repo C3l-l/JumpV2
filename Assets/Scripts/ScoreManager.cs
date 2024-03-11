@@ -37,7 +37,7 @@ public class ScoreManager : MonoBehaviour
         {
             score += 1;
             scoreText.text = "SCORE: " + score.ToString();
-            PlayerPrefs.SetInt("score", score );
+            PlayerPrefs.SetInt("score", score);
         }
         else
         {

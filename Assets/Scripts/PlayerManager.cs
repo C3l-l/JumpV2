@@ -59,12 +59,14 @@ public class PlayerManager : MonoBehaviour
     public void UpdateFruits(int amount)
     {
         numberOfFruits += amount;
+        score = numberOfFruits;
         
         if (numberOfFruits < 0)
         {
             numberOfFruits = 0;
         }
         fruitsText.text = numberOfFruits.ToString();
+        
         UnityEngine.Debug.Log("UpdateFruitsText called");
 
     }

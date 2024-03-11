@@ -33,10 +33,13 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField] private string titleId = "5F503"; // Replace with your title id
 
     private string displayName;
+   
+    
 
     private void Awake()
     {
         PlayFabSettings.TitleId = titleId;
+       
     }
     
 

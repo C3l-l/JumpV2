@@ -11,9 +11,9 @@ public class LeaderboardUpdate : MonoBehaviour
 		// Retrieve the name of this scene.
 		string sceneName = currentScene.name;
 
-		if (sceneName == "End")
+		if (sceneName == "Start")
 		{
-			PlayerManager.isGameCompleted = true;
+			//PlayerManager.isGameCompleted = true;
 			PlayerPrefs.DeleteAll();
 		}
 	}
