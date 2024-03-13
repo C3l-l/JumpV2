@@ -10,7 +10,6 @@ using TMPro;
 
 public class PlayfabManager : MonoBehaviour
 {
-
     [Header("Leaderboard")]
     public GameObject rowPrefab;
     public Transform rowsParent;
@@ -33,8 +32,6 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField] private string titleId = "5F503"; // Replace with your title id
 
     private string displayName;
-   
-    
 
     private void Awake()
     {
@@ -127,127 +124,147 @@ public class PlayfabManager : MonoBehaviour
     {
         messageText.text = message;
     }
-
-    public IEnumerator SendLeaderboardCoroutine(int score)
-    {
-        var request = new UpdatePlayerStatisticsRequest
-        {
-            Statistics = new List<StatisticUpdate>
-            {
-                new StatisticUpdate
-                {
-                    StatisticName = "Platform Score",
-                    Value = score
-                }
+    void OnError(PlayFabError error) {
+        Debug.Log("Error when updating leaderboard");
+        Debug.Log(error.GenerateErrorReport());
+    }
+    public void SendLeaderboard(int maxPlatform) {
+        var request = new UpdatePlayerStatisticsRequest {
+            Statistics = new List<StatisticUpdate> {
+                new StatisticUpdate {
+                    StatisticName = "PlatformScore",
+                    Value = maxPlatform
             }
-        };
-
-        PlayFabClientAPI.UpdatePlayerStatistics(request, result =>
-        {
-            if (result != null)
-            {
-                Debug.Log("Leaderboard updated successfully!");
-            }
-            else
-            {
-                Debug.LogError("Failed to update leaderboard: result is null.");
-            }
-        }, error =>
-        {
-            Debug.LogError("Failed to update leaderboard: " + error.ErrorMessage);
-        });
-
-        // Wait for a short delay after the PlayFab API call
-        yield return new WaitForSeconds(1f);
-    }
-
-    public void SendLeaderboardDelayedButton(int score)
-    {
-        StartCoroutine(SendLeaderboardWithDelay(score, 1f));
-    }
-
-    public IEnumerator SendLeaderboardWithDelay(int score, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        var request = new UpdatePlayerStatisticsRequest
-        {
-            Statistics = new List<StatisticUpdate>
-            {
-                new StatisticUpdate
-                {
-                    StatisticName = "Platform Score",
-                    Value = score
-                }
-            }
-        };
-
-        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnLeaderboardUpdateError);
-
-        // Wait for a short delay after the PlayFab API call
-        yield return new WaitForSeconds(1f);
-    }
-
-    void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
-    {
-        UnityEngine.Debug.Log("Leaderboard updated successfully!");
-    }
-
-    void OnLeaderboardUpdateError(PlayFabError error)
-    {
-        string errorMessage = error.GenerateErrorReport();
-        DisplayErrorMessage(errorMessage);
-        UnityEngine.Debug.LogError("Failed to update leaderboard: " + errorMessage);
-    }
-
-    public void GetLeaderboard()
-    {
-        var request = new GetLeaderboardRequest
-        {
-            StatisticName = "Platform Score",
-            StartPosition = 0,
-            MaxResultsCount = 10
-        };
-        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, null);
-    }
-
-    void OnLeaderboardGet(GetLeaderboardResult result)
-    {
-        foreach (Transform item in rowsParent)
-        {
-            Destroy(item.gameObject);
         }
-
-        foreach (var item in result.Leaderboard)
-        {
-            GameObject newGo = Instantiate(rowPrefab, rowsParent);
-            Text[] texts = newGo.GetComponentsInChildren<Text>();
-            texts[0].text = (item.Position + 1).ToString();
-            texts[1].text = item.DisplayName;
-            texts[2].text = item.StatValue.ToString();
-
-            Debug.Log(string.Format("PLACE:{0}| ID:{1}| VALUE:{2}",
-            item.Position, item.PlayFabId, item.StatValue));
-
-        }
-    }
-
-    void OnLeaderboardUpdateDelayed(UpdatePlayerStatisticsResult result)
+    };
+    PlayFabClientAPI.UpdatePlayerStatistics( request, OnLeaderboardUpdate, OnError);
+   } 
+   void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
     {
-        UnityEngine.Debug.Log("Leaderboard updated with delay!");
-    }
+        Debug.Log("Leaderboard updated successfully!");
+    }  
 
-    public void SubmitNameButton()
-    {
-        var request = new UpdateUserTitleDisplayNameRequest
-        {
-            DisplayName = nameinput.text,
-        };
-        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnLoginError);
-    }
 
-    void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
-    {
-        Debug.Log("Updated display name!");
-        leaderboardWindow.SetActive(true);
-    }
+    // public IEnumerator SendLeaderboardCoroutine(int score)
+    // {
+    //     var request = new UpdatePlayerStatisticsRequest
+    //     {
+    //         Statistics = new List<StatisticUpdate>
+    //         {
+    //             new StatisticUpdate
+    //             {
+    //                 StatisticName = "Platform Score",
+    //                 Value = score
+    //             }
+    //         }
+    //     };
+
+    //     PlayFabClientAPI.UpdatePlayerStatistics(request, result =>
+    //     {
+    //         if (result != null)
+    //         {
+    //             Debug.Log("Leaderboard updated successfully!");
+    //         }
+    //         else
+    //         {
+    //             Debug.LogError("Failed to update leaderboard: result is null.");
+    //         }
+    //     }, error =>
+    //     {
+    //         Debug.LogError("Failed to update leaderboard: " + error.ErrorMessage);
+    //     });
+
+    //     // Wait for a short delay after the PlayFab API call
+    //     yield return new WaitForSeconds(1f);
+    // }
+
+    // public void SendLeaderboardDelayedButton(int score)
+    // {
+    //     StartCoroutine(SendLeaderboardWithDelay(score, 1f));
+    // }
+
+    // public IEnumerator SendLeaderboardWithDelay(int score, float delay)
+    // {
+    //     yield return new WaitForSeconds(delay);
+    //     var request = new UpdatePlayerStatisticsRequest
+    //     {
+    //         Statistics = new List<StatisticUpdate>
+    //         {
+    //             new StatisticUpdate
+    //             {
+    //                 StatisticName = "Platform Score",
+    //                 Value = score
+    //             }
+    //         }
+    //     };
+
+    //     PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnLeaderboardUpdateError);
+
+    //     // Wait for a short delay after the PlayFab API call
+    //     yield return new WaitForSeconds(1f);
+    // }
+
+    // void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
+    // {
+    //     UnityEngine.Debug.Log("Leaderboard updated successfully!");
+    // }
+
+    // void OnLeaderboardUpdateError(PlayFabError error)
+    // {
+    //     string errorMessage = error.GenerateErrorReport();
+    //     DisplayErrorMessage(errorMessage);
+    //     UnityEngine.Debug.LogError("Failed to update leaderboard: " + errorMessage);
+    // }
+
+    // public void GetLeaderboard()
+    // {
+    //     var request = new GetLeaderboardRequest
+    //     {
+    //         StatisticName = "Platform Score",
+    //         StartPosition = 0,
+    //         MaxResultsCount = 10
+    //     };
+    //     PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, null);
+    // }
+
+    // void OnLeaderboardGet(GetLeaderboardResult result)
+    // {
+    //     foreach (Transform item in rowsParent)
+    //     {
+    //         Destroy(item.gameObject);
+    //     }
+
+    //     foreach (var item in result.Leaderboard)
+    //     {
+    //         GameObject newGo = Instantiate(rowPrefab, rowsParent);
+    //         Text[] texts = newGo.GetComponentsInChildren<Text>();
+    //         texts[0].text = (item.Position + 1).ToString();
+    //         texts[1].text = item.DisplayName;
+    //         texts[2].text = item.StatValue.ToString();
+
+    //         Debug.Log(string.Format("PLACE:{0}| ID:{1}| VALUE:{2}",
+    //         item.Position, item.PlayFabId, item.StatValue));
+
+    //     }
+    // }
+
+    // void OnLeaderboardUpdateDelayed(UpdatePlayerStatisticsResult result)
+    // {
+    //     UnityEngine.Debug.Log("Leaderboard updated with delay!");
+    // }
+
+    // public void SubmitNameButton()
+    // {
+    //     var request = new UpdateUserTitleDisplayNameRequest
+    //     {
+    //         DisplayName = nameinput.text,
+    //     };
+    //     PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnLoginError);
+    // }
+
+    // void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
+    // {
+    //     Debug.Log("Updated display name!");
+    //     leaderboardWindow.SetActive(true);
+    // }
 }
