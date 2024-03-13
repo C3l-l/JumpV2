@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1286019716267571431}
   - component: {fileID: 1286019716267571428}
   - component: {fileID: 8075005061910537940}
+  - component: {fileID: 3568425023773218186}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -62,3 +63,18 @@ MonoBehaviour:
   gameOverScreen: {fileID: 0}
   pauseMenuScreen: {fileID: 0}
   fruitsText: {fileID: 0}
+  score: 0
+  playfabManager: {fileID: 0}
+  maxPlatform: 0
+--- !u!114 &3568425023773218186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286019716267571429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156697aa723e3874aa0bae181f3c7b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     public PlayfabManager playfabManager;
     public int maxPlatform = 0;
 
+
     private void Awake()
     {
         UnityEngine.Debug.Log("PlayerManager Awake called");
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
         isLevelComplete = false;
         playfabManager = FindObjectOfType<PlayfabManager>();
         myCountdown = GetComponent<Countdown>();
+        maxPlatform = PlayerPrefs.GetInt("score",0);
         if (numberOfFruits < 0)
         {
             numberOfFruits = 0;
@@ -44,12 +46,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (isGameCompleted)
         {
+            //playfabManager.SendLeaderboard(maxPlatform);
             StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
         }
 
         if (isGameOver)
         {
             gameOverScreen.SetActive(true);
+            //playfabManager.SendLeaderboard(maxPlatform);
             StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
         }
         

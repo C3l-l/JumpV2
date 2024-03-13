@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
 
     int score = 0;
     //int highscore = 0;
+    //int maxPlatform = 0;
     
 
     private void Awake(){
@@ -35,13 +36,17 @@ public class ScoreManager : MonoBehaviour
     {
         if (Time.timeScale == 1)
         {
+            //maxPlatform += 1;
             score += 1;
             scoreText.text = "SCORE: " + score.ToString();
+            //scoreText.text = "SCORE: " + maxPlatform.ToString();
             PlayerPrefs.SetInt("score", score);
+            //PlayerPrefs.SetInt("score", maxPlatform);
         }
         else
         {
-            score += 0;
+            score +=0;
+            //maxPlatform += 0;
         }
     }
 }
