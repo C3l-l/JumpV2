@@ -145,38 +145,38 @@ public class PlayfabManager : MonoBehaviour
     // }  
 
 
-    public IEnumerator SendLeaderboardCoroutine(int score)
-    {
-        var request = new UpdatePlayerStatisticsRequest
-        {
-            Statistics = new List<StatisticUpdate>
-            {
-                new StatisticUpdate
-                {
-                    StatisticName = "PlatformScore",
-                    Value = score
-                }
-            }
-        };
+    // public IEnumerator SendLeaderboardCoroutine(int score)
+    // {
+    //     var request = new UpdatePlayerStatisticsRequest
+    //     {
+    //         Statistics = new List<StatisticUpdate>
+    //         {
+    //             new StatisticUpdate
+    //             {
+    //                 StatisticName = "PlatformScore",
+    //                 Value = score
+    //             }
+    //         }
+    //     };
 
-        PlayFabClientAPI.UpdatePlayerStatistics(request, result =>
-        {
-            if (result != null)
-            {
-                Debug.Log("Leaderboard updated successfully!");
-            }
-            else
-            {
-                Debug.LogError("Failed to update leaderboard: result is null.");
-            }
-        }, error =>
-        {
-            Debug.LogError("Failed to update leaderboard: " + error.ErrorMessage);
-        });
+    //     PlayFabClientAPI.UpdatePlayerStatistics(request, result =>
+    //     {
+    //         if (result != null)
+    //         {
+    //             Debug.Log("Leaderboard updated successfully!");
+    //         }
+    //         else
+    //         {
+    //             Debug.LogError("Failed to update leaderboard: result is null.");
+    //         }
+    //     }, error =>
+    //     {
+    //         Debug.LogError("Failed to update leaderboard: " + error.ErrorMessage);
+    //     });
 
-        // Wait for a short delay after the PlayFab API call
-        yield return new WaitForSeconds(1f);
-    }
+    //     // Wait for a short delay after the PlayFab API call
+    //     yield return new WaitForSeconds(1f);
+    // }
 
     public void SendLeaderboardDelayedButton(int score)
     {

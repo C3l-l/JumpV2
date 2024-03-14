@@ -42,17 +42,17 @@ public class PlayerManager : MonoBehaviour
     {
         if (isGameCompleted)
         {
-            //playfabManager.SendLeaderboard(maxPlatform);
             maxPlatform = PlayerPrefs.GetInt("score",0);
-            StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
+            //StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
+            playfabManager.SendLeaderboardDelayedButton(maxPlatform);
         }
 
         if (isGameOver)
         {
             gameOverScreen.SetActive(true);
-            //playfabManager.SendLeaderboard(maxPlatform);
             maxPlatform = PlayerPrefs.GetInt("score",0);
-            StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
+            //StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
+            playfabManager.SendLeaderboardDelayedButton(maxPlatform);
         }
         
     }
