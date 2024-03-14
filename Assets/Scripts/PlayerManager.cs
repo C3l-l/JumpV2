@@ -9,14 +9,12 @@ public class PlayerManager : MonoBehaviour
     // display game over screen
     public static bool isGameOver;
     public static bool isGameCompleted;
-    public static bool isLevelComplete;
     public GameObject gameOverScreen;
     public GameObject pauseMenuScreen;
     private Countdown myCountdown;
 
     public static int numberOfFruits;
     public TextMeshProUGUI fruitsText;
-    public int score;
 
     public PlayfabManager playfabManager;
     public int maxPlatform = 0;
@@ -30,10 +28,8 @@ public class PlayerManager : MonoBehaviour
         fruitsText.SetText(numberOfFruits.ToString());
         isGameOver = false;
         isGameCompleted = false;
-        isLevelComplete = false;
         playfabManager = FindObjectOfType<PlayfabManager>();
         myCountdown = GetComponent<Countdown>();
-        maxPlatform = PlayerPrefs.GetInt("score",0);
         if (numberOfFruits < 0)
         {
             numberOfFruits = 0;
@@ -47,6 +43,7 @@ public class PlayerManager : MonoBehaviour
         if (isGameCompleted)
         {
             //playfabManager.SendLeaderboard(maxPlatform);
+            maxPlatform = PlayerPrefs.GetInt("score",0);
             StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
         }
 
@@ -54,6 +51,7 @@ public class PlayerManager : MonoBehaviour
         {
             gameOverScreen.SetActive(true);
             //playfabManager.SendLeaderboard(maxPlatform);
+            maxPlatform = PlayerPrefs.GetInt("score",0);
             StartCoroutine(playfabManager.SendLeaderboardCoroutine(maxPlatform));
         }
         
@@ -63,7 +61,6 @@ public class PlayerManager : MonoBehaviour
     public void UpdateFruits(int amount)
     {
         numberOfFruits += amount;
-        score = numberOfFruits;
         
         if (numberOfFruits < 0)
         {
