@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 using PlayFab;
 using PlayFab.ClientModels;
 using TMPro;
+using System;
+using System.Text;
+using Random = System.Random;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -38,7 +41,19 @@ public class PlayfabManager : MonoBehaviour
         PlayFabSettings.TitleId = titleId;
        
     }
-    
+    private readonly Random _random = new Random();
+    public string RandomString(int size, bool lowerCase = false)
+    {
+        var builder = new StringBuilder(size);
+        char offset = lowerCase ? 'a' : 'A';
+        const int lettersOffset = 26; 
+        for (var i = 0; i < size; i++)
+        {
+            var @char = (char)_random.Next(offset, offset + lettersOffset);
+            builder.Append(@char);
+        }
+        return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+    }
 
     public void Login()
     {
@@ -50,10 +65,10 @@ public class PlayfabManager : MonoBehaviour
         }
 
         // Call the PlayFab login API with the device ID as the custom ID
-        string customId = SystemInfo.deviceUniqueIdentifier;
+        string customId = SystemInfo.deviceUniqueIdentifier + RandomString(5);
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = SystemInfo.deviceUniqueIdentifier,
+            CustomId = SystemInfo.deviceUniqueIdentifier + RandomString(5),
             CreateAccount = true,
             InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
             {
