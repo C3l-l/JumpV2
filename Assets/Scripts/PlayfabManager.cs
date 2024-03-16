@@ -237,7 +237,7 @@ public class PlayfabManager : MonoBehaviour
         {
             StatisticName = "PlatformScore",
             StartPosition = 0,
-            MaxResultsCount = 10
+            MaxResultsCount = 8
         };
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, null);
     }
