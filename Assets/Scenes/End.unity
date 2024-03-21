@@ -850,7 +850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congrats! The fruits are collected!
+  m_text: Good Job Lah! The fruits are collected!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56789ab90c069454995a9a1595ca7284, type: 2}
   m_sharedMaterial: {fileID: 4735692864244001254, guid: 56789ab90c069454995a9a1595ca7284, type: 2}
@@ -2241,7 +2241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32, y: 185}
+  m_AnchoredPosition: {x: 2, y: 185}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352417009
@@ -2909,7 +2909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4403317688469172332, guid: d849312c19d58b8409d613e07dcaf14b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 51
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 4403317688469172332, guid: d849312c19d58b8409d613e07dcaf14b, type: 3}
       propertyPath: m_AnchoredPosition.y
