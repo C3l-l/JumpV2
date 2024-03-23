@@ -103,12 +103,4 @@ public class PlayerManager : MonoBehaviour
     {
         SceneManager.LoadScene("Start");
     }
-
-    //public void NextLevel()
-    //{
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //Time.timeScale = 1;
-        //myCountdown.enabled = true;
-        //playfabManager.SendLeaderboardCoroutine(maxPlatform);
-    //}
 }
