@@ -195,7 +195,7 @@ public class PlayfabManager : MonoBehaviour
 
     public void SendLeaderboardDelayedButton(int score)
     {
-        StartCoroutine(SendLeaderboardWithDelay(score, 0.8f));
+        StartCoroutine(SendLeaderboardWithDelay(score, 0.1f));
     }
 
     public IEnumerator SendLeaderboardWithDelay(int score, float delay)
